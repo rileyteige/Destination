@@ -224,6 +224,7 @@ containing a value of this type.
         public static final int action_settings=0x7f060016;
         public static final int add=0x7f06001e;
         public static final int add_destination=0x7f060018;
+        public static final int add_destination_failure=0x7f060022;
         public static final int app_name=0x7f060015;
         public static final int are_you_sure=0x7f06001f;
         /**   Title for notification shown when GooglePlayServices needs to be

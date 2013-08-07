@@ -14,5 +14,6 @@
     <string name="are_you_sure">Are you sure?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="add_destination_failure">Could not add destination.</string>
 
 </resources>

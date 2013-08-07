@@ -27,6 +27,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends ListActivity implements OnClickListener, OnItemClickListener, OnItemLongClickListener, OnAddDestinationListener {
 
@@ -104,6 +105,7 @@ public class MainActivity extends ListActivity implements OnClickListener, OnIte
 			final String city,
 			final String state,
 			final String zipCode) {
+		final MainActivity activity = this;
 		new AsyncTask<Void, Void, Destination>()
 		{
 			public Destination doInBackground(Void... args) {
@@ -111,6 +113,9 @@ public class MainActivity extends ListActivity implements OnClickListener, OnIte
 			}
 			
 			public void onPostExecute(Destination dest) {
+				if (dest == null) {
+					Toast.makeText(activity, R.string.add_destination_failure, Toast.LENGTH_SHORT).show();
+				}
 				addAddress(dest);
 			}
 		}.execute();
