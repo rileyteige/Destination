@@ -65,7 +65,7 @@ public class DestinationDataSource {
 		
 		public void deleteDestination(Destination dest) {
 			long id = dest.getId();
-			Log.w(DestinationDataSource.class.getName(), "Comment deleted with id: " + id);
+			Log.w(DestinationDataSource.class.getName(), "Destination deleted with id: " + id);
 			database.delete(DatabaseHelper.TABLE_DESTINATIONS, DatabaseHelper.COLUMN_ID + " = " + id, null);
 		}
 		

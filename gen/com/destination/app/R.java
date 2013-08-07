@@ -225,6 +225,7 @@ containing a value of this type.
         public static final int add=0x7f06001e;
         public static final int add_destination=0x7f060018;
         public static final int app_name=0x7f060015;
+        public static final int are_you_sure=0x7f06001f;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
          */
@@ -306,8 +307,10 @@ containing a value of this type.
         public static final int common_signin_button_text_long=0x7f06000e;
         public static final int hello_world=0x7f060017;
         public static final int name=0x7f06001d;
+        public static final int no=0x7f060021;
         public static final int state=0x7f06001b;
         public static final int street_address=0x7f060019;
+        public static final int yes=0x7f060020;
         public static final int zipcode=0x7f06001c;
     }
     public static final class style {

@@ -11,5 +11,8 @@
     <string name="zipcode">Zip Code</string>
     <string name="name">Name</string>
     <string name="add">Add</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 </resources>

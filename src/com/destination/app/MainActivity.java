@@ -14,17 +14,21 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 
-public class MainActivity extends ListActivity implements OnClickListener, OnItemClickListener, OnAddDestinationListener {
+public class MainActivity extends ListActivity implements OnClickListener, OnItemClickListener, OnItemLongClickListener, OnAddDestinationListener {
 
 	private DestinationDataSource dataSource;
 	private DestinationAdapter adapter;
@@ -58,7 +62,7 @@ public class MainActivity extends ListActivity implements OnClickListener, OnIte
 		}
 	}
 
-	public void onItemClick(AdapterView<?> adView, View targetView, int position, long id)
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{		
 		Destination dest = (Destination) adapter.getItem(position);
 		LatLng currentCoordinates = findCurrentCoordinates();
@@ -66,6 +70,34 @@ public class MainActivity extends ListActivity implements OnClickListener, OnIte
 		getDirections(currentCoordinates, new LatLng(dest.getLatitude(), dest.getLongitude()));
 	}
 
+	@Override
+	public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+		final Destination dest = adapter.getItem(position);
+		
+		DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int pressed) {
+				switch (pressed) {
+				case DialogInterface.BUTTON_POSITIVE:
+					adapter.remove(dest);
+					dataSource.deleteDestination(dest);
+					break;
+				
+				case DialogInterface.BUTTON_NEGATIVE:
+					break;
+				}
+			}
+		};
+
+		new AlertDialog.Builder(this)
+			.setMessage(this.getString(R.string.are_you_sure))
+			.setPositiveButton(getString(R.string.yes), dialogClickListener)
+			.setNegativeButton(getString(R.string.no), dialogClickListener)
+			.show();
+		
+		return true;
+	}
+	
 	public void onAddDestination(
 			final String name,
 			final String streetAddress,
@@ -100,6 +132,7 @@ public class MainActivity extends ListActivity implements OnClickListener, OnIte
 	private void setupListeners() {
 		((Button)findViewById(R.id.button_add_address)).setOnClickListener(this);
 		getListView().setOnItemClickListener(this);
+		getListView().setOnItemLongClickListener(this);
 	}
 	
 	private void addAddress(Destination dest) {
