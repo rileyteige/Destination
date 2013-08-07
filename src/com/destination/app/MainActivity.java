@@ -3,6 +3,7 @@ package com.destination.app;
 import java.io.IOException;
 import java.util.List;
 
+import com.destination.db.DestinationDataSource;
 import com.destination.models.Destination;
 
 import android.location.Address;
@@ -18,10 +19,17 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity implements OnClickListener {
 
+	private DestinationDataSource dataSource;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		dataSource = new DestinationDataSource(this);
+		dataSource.open();
+		
+		loadSavedDestinations();
 		setupButtons();
 		setupTestCase();
 	}
@@ -41,6 +49,13 @@ public class MainActivity extends Activity implements OnClickListener {
 		}
 	}
 	
+	private void loadSavedDestinations() {
+		List<Destination> destinations = dataSource.getAllDestinations();
+		for (Destination dest: destinations) {
+			log(dest.getId() + " (Saved): " + dest.getFullAddress());
+		}
+	}
+	
 	private void setupButtons() {
 		((Button)findViewById(R.id.button_add_address)).setOnClickListener(this);
 	}
@@ -54,43 +69,45 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 	
 	private void addAddress() {
-		log("Compiling address...");
-		Destination dest = compileEnteredAddress();
-		if (!dest.hasAllFields()) {
+		Destination dest = createDestinationFromFields();
+		if (dest == null) {
 			return;
 		}
 		
-		log("Translating address...");
-		List<Address> possibleAddresses = null;
-		Geocoder geocoder = new Geocoder(this);
-		try {
-			possibleAddresses = geocoder.getFromLocationName(dest.getFullAddress(), 1);
-		} catch (IOException e) {
-			e.printStackTrace();
-			return;
-		}
-		
-		if (possibleAddresses == null || possibleAddresses.size() == 0) {
-			return;
-		}
-		log("Polling coordinates...");
-		Address destAddress = possibleAddresses.get(0);
-		if (!(destAddress.hasLatitude() && destAddress.hasLongitude())) {
-			return;
-		}
-		
-		dest.setCoordinates(destAddress.getLatitude(), destAddress.getLongitude());
-		log("Coordinates: (" + dest.getLatitude() + "," + dest.getLongitude() + ")");
+		log(dest.getId() + ": " + dest.getFullAddress());
 	}
 
-	private Destination compileEnteredAddress() {
-		return new Destination(
-			getTextFromId(R.id.edittext_name),
-			getTextFromId(R.id.edittext_street_address),
-			getTextFromId(R.id.edittext_city),
-			getTextFromId(R.id.edittext_state),
-			getTextFromId(R.id.edittext_zipcode)
-		);
+	private Destination createDestinationFromFields() {
+		String name = getTextFromId(R.id.edittext_name);
+		String streetAddress = getTextFromId(R.id.edittext_street_address);
+		String city = getTextFromId(R.id.edittext_city);
+		String state = getTextFromId(R.id.edittext_state);
+		String zipCode = getTextFromId(R.id.edittext_zipcode);
+		String fullAddress = streetAddress + ", " + city + ", " + state + " " + zipCode;
+		
+		double latitude = 0.0;
+		double longitude = 0.0;
+		
+		try {
+			Geocoder geocoder = new Geocoder(this);
+			List<Address> possibleAddresses = geocoder.getFromLocationName(fullAddress, 1);
+			if (possibleAddresses == null || possibleAddresses.size() == 0) {
+				return null;
+			}
+			
+			Address destAddress = possibleAddresses.get(0);
+			if (!(destAddress.hasLatitude() && destAddress.hasLongitude())) {
+				return null;
+			}
+			
+			latitude = destAddress.getLatitude();
+			longitude = destAddress.getLongitude();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		return dataSource.createDestination(getTextFromId(R.id.edittext_name), streetAddress, city, state, zipCode, latitude, longitude);
 	}
 	
 	private String getTextFromId(int id) {
