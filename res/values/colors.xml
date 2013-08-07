@@ -8,4 +8,6 @@
     <color name="textview_default_font_color">@color/white</color>
     <color name="row_destination_name">@color/electric_green</color>
     <color name="row_destination_address">@color/dark_grey</color>
+    <color name="row_destination_background_color_default">#383838</color>
+    <color name="row_destination_background_color_pressed">#B3B3B3</color>
 </resources>

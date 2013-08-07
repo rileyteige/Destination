@@ -142,11 +142,13 @@ containing a value of this type.
         public static final int common_signin_btn_light_text_disabled=0x7f040006;
         public static final int common_signin_btn_light_text_focused=0x7f040007;
         public static final int common_signin_btn_light_text_pressed=0x7f040005;
-        public static final int common_signin_btn_text_dark=0x7f040011;
-        public static final int common_signin_btn_text_light=0x7f040012;
+        public static final int common_signin_btn_text_dark=0x7f040013;
+        public static final int common_signin_btn_text_light=0x7f040014;
         public static final int dark_grey=0x7f04000d;
         public static final int electric_green=0x7f04000c;
         public static final int row_destination_address=0x7f040010;
+        public static final int row_destination_background_color_default=0x7f040011;
+        public static final int row_destination_background_color_pressed=0x7f040012;
         public static final int row_destination_name=0x7f04000f;
         public static final int textview_default_font_color=0x7f04000e;
         public static final int white=0x7f04000b;
@@ -165,8 +167,11 @@ containing a value of this type.
         public static final int edittext_state_width=0x7f070004;
         public static final int edittext_street_address_width=0x7f070002;
         public static final int edittext_zipcode_width=0x7f070005;
-        public static final int row_destination_textview_address_textsize=0x7f070008;
-        public static final int row_destination_textview_name_textsize=0x7f070007;
+        public static final int row_destination_divider_height=0x7f070007;
+        public static final int row_destination_horizontal_padding=0x7f07000b;
+        public static final int row_destination_textview_address_textsize=0x7f070009;
+        public static final int row_destination_textview_name_textsize=0x7f070008;
+        public static final int row_destination_vertical_padding=0x7f07000a;
     }
     public static final class drawable {
         public static final int common_signin_btn_icon_dark=0x7f020000;
@@ -194,6 +199,7 @@ containing a value of this type.
         public static final int common_signin_btn_text_pressed_dark=0x7f020016;
         public static final int common_signin_btn_text_pressed_light=0x7f020017;
         public static final int ic_launcher=0x7f020018;
+        public static final int row_destination_background=0x7f020019;
     }
     public static final class id {
         public static final int action_settings=0x7f05000e;
@@ -226,7 +232,6 @@ containing a value of this type.
         public static final int add_destination=0x7f060018;
         public static final int add_destination_failure=0x7f060022;
         public static final int app_name=0x7f060015;
-        public static final int are_you_sure=0x7f06001f;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
          */
@@ -306,6 +311,7 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f06000e;
+        public static final int confirm_delete=0x7f06001f;
         public static final int hello_world=0x7f060017;
         public static final int name=0x7f06001d;
         public static final int no=0x7f060021;

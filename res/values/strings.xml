@@ -11,7 +11,7 @@
     <string name="zipcode">Zip Code</string>
     <string name="name">Name</string>
     <string name="add">Add</string>
-    <string name="are_you_sure">Are you sure?</string>
+    <string name="confirm_delete">Do you want to delete this item?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="add_destination_failure">Could not add destination.</string>

@@ -2,7 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:paddingTop="@dimen/row_destination_vertical_padding"
+    android:paddingBottom="@dimen/row_destination_vertical_padding"
+    android:paddingLeft="@dimen/row_destination_horizontal_padding"
+    android:paddingRight="@dimen/row_destination_horizontal_padding"
+    android:background="@drawable/row_destination_background" >
     
 	<TextView
 	    android:id="@+id/row_destination_textview_name"

@@ -91,7 +91,7 @@ public class MainActivity extends ListActivity implements OnClickListener, OnIte
 		};
 
 		new AlertDialog.Builder(this)
-			.setMessage(this.getString(R.string.are_you_sure))
+			.setMessage(this.getString(R.string.confirm_delete))
 			.setPositiveButton(getString(R.string.yes), dialogClickListener)
 			.setNegativeButton(getString(R.string.no), dialogClickListener)
 			.show();

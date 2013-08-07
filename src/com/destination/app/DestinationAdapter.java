@@ -35,7 +35,7 @@ public class DestinationAdapter extends ArrayAdapter<Destination>{
 			TextView textViewAddress = (TextView)destRowView.findViewById(R.id.row_destination_textview_address);
 			
 			textViewName.setText(dest.getName());
-			textViewAddress.setText(dest.getFullAddress());
+			textViewAddress.setText(dest.getStreetAddress() + "\n" + dest.getCity() + ", " + dest.getState() + " " + dest.getZipCode());
 		}
 		return destRowView;
 	}
