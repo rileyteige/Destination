@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <EditText
+        android:id="@+id/edittext_name"
+        android:layout_width="@dimen/edittext_name_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:inputType="text"
+        android:hint="@string/name"/>
+    
+    <EditText
+        android:id="@+id/edittext_street_address"
+        android:layout_width="@dimen/edittext_street_address_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:inputType="text"
+        android:hint="@string/street_address"/>
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+        
+        <EditText
+            android:id="@+id/edittext_city"
+            android:layout_width="@dimen/edittext_city_width"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="@string/city"/>
+        
+        <EditText
+            android:id="@+id/edittext_state"
+            android:layout_width="@dimen/edittext_state_width"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="@string/state"/>
+        
+        <EditText
+            android:id="@+id/edittext_zipcode"
+            android:layout_width="@dimen/edittext_zipcode_width"
+       		android:layout_height="wrap_content"
+       		android:inputType="text"
+       		android:hint="@string/zipcode"/>
+        
+    </LinearLayout>
+    
+    <Button
+        android:id="@+id/dialog_add_destination_button_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add"/>
+
+</LinearLayout>

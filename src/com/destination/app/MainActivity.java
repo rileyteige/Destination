@@ -12,6 +12,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.ListActivity;
 import android.content.Context;
@@ -22,9 +23,8 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 
-public class MainActivity extends ListActivity implements OnClickListener, OnItemClickListener {
+public class MainActivity extends ListActivity implements OnClickListener, OnItemClickListener, OnAddDestinationListener {
 
 	private DestinationDataSource dataSource;
 	private DestinationAdapter adapter;
@@ -37,8 +37,9 @@ public class MainActivity extends ListActivity implements OnClickListener, OnIte
 		dataSource = new DestinationDataSource(this);
 		dataSource.open();
 		
-		loadSavedDestinations(true);
+		loadSavedDestinations(false);
 		setupListeners();
+		
 	}
 
 	@Override
@@ -51,17 +52,36 @@ public class MainActivity extends ListActivity implements OnClickListener, OnIte
 	public void onClick(View clickedView) {
 		switch (clickedView.getId()) {
 		case R.id.button_add_address:
-			addAddress();
+			AddDestinationDialog dialog = new AddDestinationDialog(this);
+			dialog.show(getFragmentManager().beginTransaction(), MainActivity.class.getName());
 			break;
 		}
 	}
 
 	public void onItemClick(AdapterView<?> adView, View targetView, int position, long id)
 	{		
-		Destination dest = (Destination) getListAdapter().getItem(position);
+		Destination dest = (Destination) adapter.getItem(position);
 		LatLng currentCoordinates = findCurrentCoordinates();
 		
 		getDirections(currentCoordinates, new LatLng(dest.getLatitude(), dest.getLongitude()));
+	}
+
+	public void onAddDestination(
+			final String name,
+			final String streetAddress,
+			final String city,
+			final String state,
+			final String zipCode) {
+		new AsyncTask<Void, Void, Destination>()
+		{
+			public Destination doInBackground(Void... args) {
+				return createDestination(name, streetAddress, city, state, zipCode);
+			}
+			
+			public void onPostExecute(Destination dest) {
+				addAddress(dest);
+			}
+		}.execute();
 	}
 	
 	private void loadSavedDestinations(boolean shouldDelete) {
@@ -82,20 +102,14 @@ public class MainActivity extends ListActivity implements OnClickListener, OnIte
 		getListView().setOnItemClickListener(this);
 	}
 	
-	private void addAddress() {
-		Destination dest = createDestinationFromFields();
+	private void addAddress(Destination dest) {
 		if (dest == null) {
 			return;
 		}
 		adapter.add(dest);
 	}
 
-	private Destination createDestinationFromFields() {
-		String name = getTextFromId(R.id.edittext_name);
-		String streetAddress = getTextFromId(R.id.edittext_street_address);
-		String city = getTextFromId(R.id.edittext_city);
-		String state = getTextFromId(R.id.edittext_state);
-		String zipCode = getTextFromId(R.id.edittext_zipcode);
+	private Destination createDestination(String name, String streetAddress, String city, String state, String zipCode) {
 		String fullAddress = streetAddress + ", " + city + ", " + state + " " + zipCode;
 		
 		double latitude = 0.0;
@@ -148,9 +162,5 @@ public class MainActivity extends ListActivity implements OnClickListener, OnIte
 	
 	private String stringifyCoordinates(LatLng coord) {
 		return coord.latitude + "," + coord.longitude;
-	}
-	
-	private String getTextFromId(int id) {
-		return ((EditText)findViewById(id)).getText().toString();
 	}
 }
