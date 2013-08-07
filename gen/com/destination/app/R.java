@@ -129,6 +129,7 @@ containing a value of this type.
         public static final int zOrderOnTop=0x7f01000d;
     }
     public static final class color {
+        public static final int black=0x7f04000a;
         public static final int common_action_bar_splitter=0x7f040009;
         /**  Sign-in Button Colors 
          */
@@ -141,8 +142,14 @@ containing a value of this type.
         public static final int common_signin_btn_light_text_disabled=0x7f040006;
         public static final int common_signin_btn_light_text_focused=0x7f040007;
         public static final int common_signin_btn_light_text_pressed=0x7f040005;
-        public static final int common_signin_btn_text_dark=0x7f04000a;
-        public static final int common_signin_btn_text_light=0x7f04000b;
+        public static final int common_signin_btn_text_dark=0x7f040011;
+        public static final int common_signin_btn_text_light=0x7f040012;
+        public static final int dark_grey=0x7f04000d;
+        public static final int electric_green=0x7f04000c;
+        public static final int row_destination_address=0x7f040010;
+        public static final int row_destination_name=0x7f04000f;
+        public static final int textview_default_font_color=0x7f04000e;
+        public static final int white=0x7f04000b;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -158,6 +165,8 @@ containing a value of this type.
         public static final int edittext_state_width=0x7f070004;
         public static final int edittext_street_address_width=0x7f070002;
         public static final int edittext_zipcode_width=0x7f070005;
+        public static final int row_destination_textview_address_textsize=0x7f070008;
+        public static final int row_destination_textview_name_textsize=0x7f070007;
     }
     public static final class drawable {
         public static final int common_signin_btn_icon_dark=0x7f020000;
@@ -187,7 +196,7 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020018;
     }
     public static final class id {
-        public static final int action_settings=0x7f05000c;
+        public static final int action_settings=0x7f05000d;
         public static final int button_add_address=0x7f05000a;
         public static final int edittext_city=0x7f050007;
         public static final int edittext_name=0x7f050005;
@@ -197,19 +206,21 @@ containing a value of this type.
         public static final int hybrid=0x7f050004;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
+        public static final int row_destination_textview_address=0x7f05000c;
+        public static final int row_destination_textview_name=0x7f05000b;
         public static final int satellite=0x7f050002;
         public static final int terrain=0x7f050003;
-        public static final int textview_captions=0x7f05000b;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
+        public static final int row_destination=0x7f030001;
     }
     public static final class menu {
         public static final int main=0x7f090000;
     }
     public static final class string {
         public static final int action_settings=0x7f060016;
-        public static final int add_address=0x7f060018;
+        public static final int add_destination=0x7f060018;
         public static final int app_name=0x7f060015;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
@@ -298,15 +309,6 @@ containing a value of this type.
     }
     public static final class style {
         /** 
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    
-
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        
-
         Base application theme for API 11+. This theme completely replaces
         AppBaseTheme from res/values/styles.xml on API 11+ devices.
     
@@ -318,11 +320,9 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080000;
-        /**  Application theme. 
- All customizations that are NOT specific to a particular API-level can go here. 
-         */
-        public static final int AppTheme=0x7f080001;
+        public static final int AppBaseTheme=0x7f080002;
+        public static final int AppTheme=0x7f080000;
+        public static final int textview_default_style=0x7f080001;
     }
     public static final class styleable {
         /** Attributes that can be used with a MapAttrs.

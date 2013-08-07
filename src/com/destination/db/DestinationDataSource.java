@@ -69,10 +69,10 @@ public class DestinationDataSource {
 			database.delete(DatabaseHelper.TABLE_DESTINATIONS, DatabaseHelper.COLUMN_ID + " = " + id, null);
 		}
 		
-		public List<Destination> getAllDestinations() {
+		public List<Destination> getAllDestinations(boolean sort) {
 			List<Destination> destinations = new ArrayList<Destination>();
 			
-			Cursor cursor = database.query(DatabaseHelper.TABLE_DESTINATIONS, allColumns, null, null, null, null, null);
+			Cursor cursor = database.query(DatabaseHelper.TABLE_DESTINATIONS, allColumns, null, null, null, null, sort ? DatabaseHelper.COLUMN_NAME : null);
 			cursor.moveToFirst();
 			while(!cursor.isAfterLast()) {
 				Destination dest = destinationFromCursor(cursor);

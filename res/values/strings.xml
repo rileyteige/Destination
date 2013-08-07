@@ -4,7 +4,7 @@
     <string name="app_name">Destination</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world! We are testing a push from Eclipse.</string>
-    <string name="add_address">Add Address</string>
+    <string name="add_destination">Add Destination</string>
     <string name="street_address">Street Address</string>
     <string name="city">City</string>
     <string name="state">State</string>
