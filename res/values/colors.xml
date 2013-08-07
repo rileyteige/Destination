@@ -5,6 +5,7 @@
     <color name="electric_green">#44E627</color>
     <color name="dark_grey">#8A8A8A</color>
     
+    <color name="main_background_color">#091208</color>
     <color name="textview_default_font_color">@color/white</color>
     <color name="row_destination_name">@color/electric_green</color>
     <color name="row_destination_address">@color/dark_grey</color>

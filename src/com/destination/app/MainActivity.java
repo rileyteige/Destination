@@ -16,20 +16,19 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.app.ListActivity;
-import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends ListActivity implements OnClickListener, OnItemClickListener, OnItemLongClickListener, OnAddDestinationListener {
+public class MainActivity extends ListActivity implements OnItemClickListener, OnItemLongClickListener, OnAddDestinationListener {
 
 	private DestinationDataSource dataSource;
 	private DestinationAdapter adapter;
@@ -44,23 +43,27 @@ public class MainActivity extends ListActivity implements OnClickListener, OnIte
 		
 		loadSavedDestinations(false);
 		setupListeners();
-		
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+		return super.onCreateOptionsMenu(menu);
 	}
 	
-	public void onClick(View clickedView) {
-		switch (clickedView.getId()) {
-		case R.id.button_add_address:
-			AddDestinationDialog dialog = new AddDestinationDialog(this);
-			dialog.show(getFragmentManager().beginTransaction(), MainActivity.class.getName());
-			break;
-		}
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu)
+	{
+		MenuItem item = menu.getItem(Menu.FIRST - 1);
+		item.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+			
+			public boolean onMenuItemClick(MenuItem item) {
+				showAddDestinationDialog();
+				return true;
+			}
+		});
+		return super.onPrepareOptionsMenu(menu);
 	}
 
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
@@ -135,9 +138,14 @@ public class MainActivity extends ListActivity implements OnClickListener, OnIte
 	}
 	
 	private void setupListeners() {
-		((Button)findViewById(R.id.button_add_address)).setOnClickListener(this);
+		//((Button)findViewById(R.id.button_add_address)).setOnClickListener(this);
 		getListView().setOnItemClickListener(this);
 		getListView().setOnItemLongClickListener(this);
+	}
+	
+	private void showAddDestinationDialog() {
+		AddDestinationDialog dialog = new AddDestinationDialog(this);
+		dialog.show(getFragmentManager().beginTransaction(), MainActivity.class.getName());
 	}
 	
 	private void addAddress(Destination dest) {

@@ -142,36 +142,39 @@ containing a value of this type.
         public static final int common_signin_btn_light_text_disabled=0x7f040006;
         public static final int common_signin_btn_light_text_focused=0x7f040007;
         public static final int common_signin_btn_light_text_pressed=0x7f040005;
-        public static final int common_signin_btn_text_dark=0x7f040013;
-        public static final int common_signin_btn_text_light=0x7f040014;
+        public static final int common_signin_btn_text_dark=0x7f040014;
+        public static final int common_signin_btn_text_light=0x7f040015;
         public static final int dark_grey=0x7f04000d;
         public static final int electric_green=0x7f04000c;
-        public static final int row_destination_address=0x7f040010;
-        public static final int row_destination_background_color_default=0x7f040011;
-        public static final int row_destination_background_color_pressed=0x7f040012;
-        public static final int row_destination_name=0x7f04000f;
-        public static final int textview_default_font_color=0x7f04000e;
+        public static final int main_background_color=0x7f04000e;
+        public static final int row_destination_address=0x7f040011;
+        public static final int row_destination_background_color_default=0x7f040012;
+        public static final int row_destination_background_color_pressed=0x7f040013;
+        public static final int row_destination_name=0x7f040010;
+        public static final int textview_default_font_color=0x7f04000f;
         public static final int white=0x7f04000b;
     }
     public static final class dimen {
-        /**  Default screen margins, per the Android Design guidelines. 
-
+        /** 
          Customize dimensions originally defined in res/values/dimens.xml (such as
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f070000;
-        public static final int activity_vertical_margin=0x7f070001;
-        public static final int edittext_city_width=0x7f070003;
-        public static final int edittext_name_width=0x7f070006;
-        public static final int edittext_state_width=0x7f070004;
-        public static final int edittext_street_address_width=0x7f070002;
-        public static final int edittext_zipcode_width=0x7f070005;
-        public static final int row_destination_divider_height=0x7f070007;
-        public static final int row_destination_horizontal_padding=0x7f07000b;
-        public static final int row_destination_textview_address_textsize=0x7f070009;
-        public static final int row_destination_textview_name_textsize=0x7f070008;
-        public static final int row_destination_vertical_padding=0x7f07000a;
+        public static final int activity_horizontal_margin=0x7f070001;
+        public static final int activity_vertical_margin=0x7f070002;
+        public static final int edittext_city_width=0x7f070004;
+        public static final int edittext_name_width=0x7f070007;
+        public static final int edittext_state_width=0x7f070005;
+        public static final int edittext_street_address_width=0x7f070003;
+        public static final int edittext_zipcode_width=0x7f070006;
+        /**  Default screen margins, per the Android Design guidelines. 
+         */
+        public static final int item_default_margin=0x7f070000;
+        public static final int row_destination_divider_height=0x7f070008;
+        public static final int row_destination_horizontal_padding=0x7f07000c;
+        public static final int row_destination_textview_address_textsize=0x7f07000a;
+        public static final int row_destination_textview_name_textsize=0x7f070009;
+        public static final int row_destination_vertical_padding=0x7f07000b;
     }
     public static final class drawable {
         public static final int common_signin_btn_icon_dark=0x7f020000;
@@ -199,22 +202,22 @@ containing a value of this type.
         public static final int common_signin_btn_text_pressed_dark=0x7f020016;
         public static final int common_signin_btn_text_pressed_light=0x7f020017;
         public static final int ic_launcher=0x7f020018;
-        public static final int row_destination_background=0x7f020019;
+        public static final int main_background=0x7f020019;
+        public static final int row_destination_background=0x7f02001a;
     }
     public static final class id {
-        public static final int action_settings=0x7f05000e;
-        public static final int button_add_address=0x7f050005;
-        public static final int dialog_add_destination_button_submit=0x7f05000b;
-        public static final int edittext_city=0x7f050008;
-        public static final int edittext_name=0x7f050006;
-        public static final int edittext_state=0x7f050009;
-        public static final int edittext_street_address=0x7f050007;
-        public static final int edittext_zipcode=0x7f05000a;
+        public static final int dialog_add_destination_button_submit=0x7f05000a;
+        public static final int edittext_city=0x7f050007;
+        public static final int edittext_name=0x7f050005;
+        public static final int edittext_state=0x7f050008;
+        public static final int edittext_street_address=0x7f050006;
+        public static final int edittext_zipcode=0x7f050009;
         public static final int hybrid=0x7f050004;
+        public static final int menu_add_destination=0x7f05000d;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
-        public static final int row_destination_textview_address=0x7f05000d;
-        public static final int row_destination_textview_name=0x7f05000c;
+        public static final int row_destination_textview_address=0x7f05000c;
+        public static final int row_destination_textview_name=0x7f05000b;
         public static final int satellite=0x7f050002;
         public static final int terrain=0x7f050003;
     }
@@ -228,9 +231,10 @@ containing a value of this type.
     }
     public static final class string {
         public static final int action_settings=0x7f060016;
-        public static final int add=0x7f06001e;
+        public static final int add=0x7f06001f;
         public static final int add_destination=0x7f060018;
-        public static final int add_destination_failure=0x7f060022;
+        public static final int add_destination_failure=0x7f060023;
+        public static final int add_destination_menu=0x7f060019;
         public static final int app_name=0x7f060015;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
@@ -255,7 +259,7 @@ containing a value of this type.
         [CHAR LIMIT=70] 
          */
         public static final int auth_client_using_bad_version_title=0x7f06000f;
-        public static final int city=0x7f06001a;
+        public static final int city=0x7f06001b;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -311,14 +315,14 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f06000e;
-        public static final int confirm_delete=0x7f06001f;
+        public static final int confirm_delete=0x7f060020;
         public static final int hello_world=0x7f060017;
-        public static final int name=0x7f06001d;
-        public static final int no=0x7f060021;
-        public static final int state=0x7f06001b;
-        public static final int street_address=0x7f060019;
-        public static final int yes=0x7f060020;
-        public static final int zipcode=0x7f06001c;
+        public static final int name=0x7f06001e;
+        public static final int no=0x7f060022;
+        public static final int state=0x7f06001c;
+        public static final int street_address=0x7f06001a;
+        public static final int yes=0x7f060021;
+        public static final int zipcode=0x7f06001d;
     }
     public static final class style {
         /** 
@@ -333,9 +337,10 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080002;
+        public static final int AppBaseTheme=0x7f080003;
         public static final int AppTheme=0x7f080000;
-        public static final int textview_default_style=0x7f080001;
+        public static final int action_bar=0x7f080001;
+        public static final int textview_default_style=0x7f080002;
     }
     public static final class styleable {
         /** Attributes that can be used with a MapAttrs.
