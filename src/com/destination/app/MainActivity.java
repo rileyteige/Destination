@@ -152,7 +152,13 @@ public class MainActivity extends ListActivity implements OnItemClickListener, O
 		if (dest == null) {
 			return;
 		}
-		adapter.add(dest);
+		
+		Destination.DestinationComparator comparator = new Destination.DestinationComparator();
+		
+		int i = 0;
+		while (comparator.compare(dest, adapter.getItem(i)) >= 0) { i++; }
+		
+		adapter.insert(dest, i);
 	}
 
 	private Destination createDestination(String name, String streetAddress, String city, String state, String zipCode) {

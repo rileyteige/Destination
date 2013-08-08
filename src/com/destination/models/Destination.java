@@ -1,5 +1,7 @@
 package com.destination.models;
 
+import java.util.Comparator;
+
 public class Destination {
 	private long id;
 	private String name;
@@ -33,5 +35,12 @@ public class Destination {
 	
 	public String getFullAddress() {
 		return streetAddress + ", " + city + ", " + state + " " + zipCode;
+	}
+	
+	public static class DestinationComparator implements Comparator<Destination> {
+		public int compare(Destination x, Destination y) {
+			// Sort case-insensitive.
+			return x.getName().toLowerCase().compareTo(y.getName().toLowerCase());
+		}
 	}
 }

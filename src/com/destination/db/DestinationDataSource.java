@@ -2,7 +2,6 @@ package com.destination.db;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import com.destination.models.Destination;
@@ -85,13 +84,7 @@ public class DestinationDataSource {
 			
 			if (sort) {
 				// Sort case-insensitive into ascending order.
-				Collections.sort(destinations, new Comparator<Destination>() {
-					@Override
-					public int compare(Destination x, Destination y) {
-						// Compare case-insensitive.
-						return x.getName().toLowerCase().compareTo(y.getName().toLowerCase());
-					}
-				});
+				Collections.sort(destinations, new Destination.DestinationComparator());
 			}
 			
 			return destinations;
