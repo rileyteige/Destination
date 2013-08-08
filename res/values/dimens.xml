@@ -14,5 +14,6 @@
     <dimen name="row_destination_textview_address_textsize">18dp</dimen>
     <dimen name="row_destination_vertical_padding">4dp</dimen>
     <dimen name="row_destination_horizontal_padding">8dp</dimen>
+    <dimen name="dialog_message_text_size">14dp</dimen>
 
 </resources>

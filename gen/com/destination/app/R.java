@@ -162,6 +162,7 @@ containing a value of this type.
          */
         public static final int activity_horizontal_margin=0x7f070001;
         public static final int activity_vertical_margin=0x7f070002;
+        public static final int dialog_message_text_size=0x7f07000d;
         public static final int edittext_city_width=0x7f070004;
         public static final int edittext_name_width=0x7f070007;
         public static final int edittext_state_width=0x7f070005;
@@ -231,10 +232,10 @@ containing a value of this type.
     }
     public static final class string {
         public static final int action_settings=0x7f060016;
-        public static final int add=0x7f06001f;
+        public static final int add=0x7f060020;
         public static final int add_destination=0x7f060018;
-        public static final int add_destination_failure=0x7f060023;
-        public static final int add_destination_menu=0x7f060019;
+        public static final int add_destination_failure=0x7f060028;
+        public static final int add_destination_menu=0x7f06001a;
         public static final int app_name=0x7f060015;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
@@ -259,7 +260,8 @@ containing a value of this type.
         [CHAR LIMIT=70] 
          */
         public static final int auth_client_using_bad_version_title=0x7f06000f;
-        public static final int city=0x7f06001b;
+        public static final int cancel=0x7f060025;
+        public static final int city=0x7f06001c;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -315,14 +317,19 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f06000e;
-        public static final int confirm_delete=0x7f060020;
+        public static final int confirm_delete=0x7f060022;
+        public static final int delete=0x7f060027;
         public static final int hello_world=0x7f060017;
-        public static final int name=0x7f06001e;
-        public static final int no=0x7f060022;
-        public static final int state=0x7f06001c;
-        public static final int street_address=0x7f06001a;
-        public static final int yes=0x7f060021;
-        public static final int zipcode=0x7f06001d;
+        public static final int name=0x7f06001f;
+        public static final int no=0x7f060024;
+        public static final int state=0x7f06001d;
+        public static final int street_address=0x7f06001b;
+        public static final int submit=0x7f060021;
+        public static final int update=0x7f060026;
+        public static final int update_destination=0x7f060019;
+        public static final int update_destination_failure=0x7f060029;
+        public static final int yes=0x7f060023;
+        public static final int zipcode=0x7f06001e;
     }
     public static final class style {
         /** 

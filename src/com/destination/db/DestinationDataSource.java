@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.destination.common.Utility;
 import com.destination.models.Destination;
 
 import android.content.ContentValues;
@@ -62,6 +63,24 @@ public class DestinationDataSource {
 			Destination dest = destinationFromCursor(cursor);
 			cursor.close();
 			return dest;
+		}
+		
+		public int updateDestination(Destination dest) {
+			if (dest == null) {
+				Utility.warn("Null destination.");
+				return 0;
+			}
+			
+			ContentValues values = new ContentValues();
+			values.put(DatabaseHelper.COLUMN_NAME, dest.getName());
+			values.put(DatabaseHelper.COLUMN_STREET_ADDRESS, dest.getStreetAddress());
+			values.put(DatabaseHelper.COLUMN_CITY, dest.getCity());
+			values.put(DatabaseHelper.COLUMN_STATE, dest.getState());
+			values.put(DatabaseHelper.COLUMN_ZIPCODE, dest.getZipCode());
+			values.put(DatabaseHelper.COLUMN_LATITUDE, dest.getLatitude());
+			values.put(DatabaseHelper.COLUMN_LONGITUDE, dest.getLongitude());
+			
+			return database.update(DatabaseHelper.TABLE_DESTINATIONS, values, DatabaseHelper.COLUMN_ID + " = " + dest.getId(), null);
 		}
 		
 		public void deleteDestination(Destination dest) {
