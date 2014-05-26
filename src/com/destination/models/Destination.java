@@ -2,6 +2,8 @@ package com.destination.models;
 
 import java.util.Comparator;
 
+import com.destination.common.Utility;
+
 public class Destination {
 	private long id;
 	private String name;
@@ -14,6 +16,15 @@ public class Destination {
 	private double longitude;
 	
 	public Destination(long id, String name, String streetAddress, String city, String state, String zipCode, double latitude, double longitude) {
+		if (Utility.isNullOrEmpty(name) ||
+			Utility.isNullOrEmpty(streetAddress) ||
+			Utility.isNullOrEmpty(city) ||
+			Utility.isNullOrEmpty(state) ||
+			Utility.isNullOrEmpty(zipCode)) {
+			
+			throw new IllegalArgumentException();
+		}
+		
 		this.id = id;
 		this.name = name;
 		this.streetAddress = streetAddress;
